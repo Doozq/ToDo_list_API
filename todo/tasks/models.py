@@ -14,3 +14,13 @@ class Task(models.Model):
     file = models.FileField(upload_to='task_files/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Comment(models.Model):
+    task = models.ForeignKey(
+        'Task', 
+        related_name='comments', 
+        on_delete=models.CASCADE
+    )
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
