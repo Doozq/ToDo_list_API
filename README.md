@@ -67,6 +67,7 @@ DATABASES = {
 После того как база данных настроена, выполните миграции:
 
 ```bash
+cd todo
 python manage.py migrate
 ```
 
@@ -98,11 +99,16 @@ python manage.py runserver
 POST /api/token/
 ```
 
-Пример запроса для получения токена:
+Примеры запроса для получения токена:
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"username": "your_username", "password": "your_password"}' http://127.0.0.1:8000/api/token/
 ```
+или
+```bash
+Invoke-WebRequest -Uri http://127.0.0.1:8000/api/token/ -Method Post -Headers @{"Content-Type"="application/json"} -Body '{"username": "your_username", "password": "your_password"}'
+```
+или же просо можете перейти в браузере по адрессу `http://127.0.0.1:8000/api/token/`
 
 Ответ будет содержать `access` и `refresh` токены:
 
